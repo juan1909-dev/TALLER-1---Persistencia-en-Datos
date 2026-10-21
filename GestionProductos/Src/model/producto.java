@@ -30,4 +30,16 @@ public class producto{
     public String getdescripcion(){return descripcion;}
     public double getprecio(){return precio;}
     public int getcantidad(){return cantidad;}
+
+     public static producto fromCsv(String linea) {
+        String[] p = linea.split("\\|");
+        return new producto(p[0], p[1], p[2],
+                Double.parseDouble(p[3]), Integer.parseInt(p[4]));
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[%s] %s | %s | $%.2f | Stock: %d",
+                codigo, nombre, descripcion, precio, cantidad);
+    }
 }
